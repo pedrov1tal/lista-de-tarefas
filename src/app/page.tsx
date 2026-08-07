@@ -3,8 +3,26 @@ import { Button } from "@/components/ui/button"
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { Plus, List, Check, Ellipsis, SquarePen} from "lucide-react"
-
+import { Plus, List, Check, Ellipsis, SquarePen, Trash2, ListCheck, Sigma} from "lucide-react"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 
 
@@ -17,19 +35,86 @@ const Home = () => {
       <Input placeholder="Adicionar Tarefa"></Input> 
       <Button className="cursor-pointer"><Plus />Cadastrar </Button>
         </CardContent>
-    <Separator />
+    <Separator  className="mb-4"/>
     <div className="flex gap-2">
-      <Badge className="cursor-pointer"><List /> Todas</Badge>
-      <Badge className="cursor-pointer"><Ellipsis /> Não Finalizadas</Badge>
-      <Badge className="cursor-pointer"><Check/> Concluidas</Badge>
+      <Badge className="cursor-pointer" variant="default"><List /> Todas</Badge>
+      <Badge className="cursor-pointer" variant="outline"><Ellipsis /> Não Finalizadas</Badge>
+      <Badge className="cursor-pointer" variant="outline"><Check/> Concluidas</Badge>
     </div>
-    <div className="bg-red-500 ">
-      <div className="bg-green-200 h-8 flex justify-between">
-        <div className="w-2 h-full bg-amber-100"></div>
-        <p >Estudar React</p>
-        <div><SquarePen/></div>
+
+    <div className="  px-0 py-0 border-b-1 ">
+      <div className=" h-14 flex justify-between items-center  border-t-1">
+        <div className="w-1 h-full bg-green-300"></div>
+        <p className="flex-1 px-2 text-sm">Estudar React</p>
+        <div className="flex items-center gap-2">
+          
+          <Dialog>
+  <DialogTrigger
+    render={
+      <Button variant="ghost" size="icon-sm" className="cursor-pointer" />
+    }
+  >
+    <SquarePen size={16} />
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Editar tarefa</DialogTitle>
+      
+    </DialogHeader>
+    <div className="flex gap-2 ">
+      <input  placeholder="Editar" className="w-[100%]"/>
+      <Button className="cursor-pointer">Editar</Button></div>
+  </DialogContent>
+</Dialog>
+          <Trash2 size={16} className="cursor-pointer"/>
+        
+        </div>
       </div>
     </div>
+
+<div className="flex justify-between  items-center">
+
+
+<div className="flex  gap-2 ">
+  <ListCheck  size={14}/>
+  <p className="text-xs">Tarefas concluidas (3/3)</p>
+
+
+</div>
+<AlertDialog>
+  <AlertDialogTrigger
+  render={
+    <Button
+      className="text-xs h-7 cursor-pointer"
+      variant="outline"
+    />
+  }
+>
+  <Trash2 />
+  Limpar tarefas concluídas
+</AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Tem certeza que deseja excluir ?</AlertDialogTitle>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogAction variant="outline">Sim</AlertDialogAction>
+      <AlertDialogCancel variant="default">Não</AlertDialogCancel>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+
+</div>
+
+<div className="h-2 w-full bg-gray-100 rounded-md">
+  <div className="h-full  bg-blue-500 rounded-md" style={{width: "50%"}}></div>
+</div>
+    
+    <div className="flex items-center justify-end mt-2 gap-2">
+      <Sigma size={14}/><p className="text-xs">3 Tarefas pendentes</p>
+    </div>
+
+
 
 </Card>
     </main>
