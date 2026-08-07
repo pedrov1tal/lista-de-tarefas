@@ -1,6 +1,17 @@
 # Lista de Tarefas
 
-Uma interface web para organizar tarefas, construída com Next.js. O projeto apresenta um formulário para cadastrar tarefas, filtros visuais e um item de exemplo.
+Interface web para organizar tarefas, construída com Next.js. A página apresenta um campo de cadastro, filtros visuais, indicador de progresso e uma tarefa de exemplo.
+
+## Funcionalidades de interface
+
+- Campo e botão para cadastrar tarefas.
+- Filtros visuais para todas, não finalizadas e concluídas.
+- Exibição de tarefa com ações de edição e exclusão.
+- Diálogo para editar uma tarefa.
+- Alerta de confirmação para limpar tarefas concluídas.
+- Indicador de tarefas concluídas, pendentes e progresso.
+
+Os diálogos usam os componentes do projeto baseados em Base UI. Para que um `Button` seja o próprio gatilho, é usada a propriedade `render` em `DialogTrigger` e `AlertDialogTrigger`; `asChild` é uma API do Radix UI e não é compatível com estes componentes.
 
 ## Tecnologias
 
@@ -8,6 +19,7 @@ Uma interface web para organizar tarefas, construída com Next.js. O projeto apr
 - React 19
 - TypeScript
 - Tailwind CSS 4
+- Base UI
 - shadcn/ui
 - Lucide React
 
@@ -49,4 +61,4 @@ src/
 
 ## Status
 
-O projeto está na etapa inicial de interface. O cadastro, os filtros e a edição de tarefas ainda precisam ser conectados à lógica e ao armazenamento de dados.
+O projeto está na etapa inicial da interface. O cadastro, os filtros, a edição e a exclusão ainda precisam ser conectados à lógica e ao armazenamento de dados.
