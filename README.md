@@ -41,12 +41,12 @@ Depois, abra [http://localhost:3000](http://localhost:3000) no navegador.
 
 ## Scripts disponíveis
 
-| Comando | Descrição |
-| --- | --- |
-| `npm run dev` | Inicia o ambiente de desenvolvimento. |
-| `npm run build` | Gera a versão de produção. |
+| Comando         | Descrição                                  |
+| --------------- | ------------------------------------------ |
+| `npm run dev`   | Inicia o ambiente de desenvolvimento.      |
+| `npm run build` | Gera a versão de produção.                 |
 | `npm run start` | Executa a versão de produção após o build. |
-| `npm run lint` | Verifica a qualidade do código com ESLint. |
+| `npm run lint`  | Verifica a qualidade do código com ESLint. |
 
 ## Estrutura principal
 
