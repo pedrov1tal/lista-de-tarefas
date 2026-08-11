@@ -1,3 +1,4 @@
+"use client"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,10 +8,25 @@ import { Plus, List, Check, Ellipsis,Trash2, ListCheck, Sigma} from "lucide-reac
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import EditTask from "@/components/ui/edit-task"
 import AlertComp from "@/components/ui/alert-comp"
-
+import { getTasks } from "@/actions/get-task-from-db"
+import { useEffect, useState, useTransition } from "react"
+import { Task } from "@/generated/prisma/client"
 
 
 const Home = () => {
+  const [taskList, setTaskList] = useState<Task[]>([])
+  const [, startTransition] = useTransition()
+
+  const handleGetTasks = () => {
+    startTransition(async () => {
+      const tasks = await getTasks()
+      setTaskList(tasks)
+    })
+  }
+  useEffect(() => {
+    handleGetTasks()
+  }, [])
+  
   return ( 
     <main className="w-full h-screen bg-black flex justify-center items-center">
      
@@ -26,17 +42,17 @@ const Home = () => {
       <Badge className="cursor-pointer" variant="outline"><Check/> Concluidas</Badge>
     </div>
 
-    <div className="  px-0 py-0 border-b-1 ">
+    {taskList.map(task => (<div className="  px-0 py-0 border-b-1  " key={task.id}>
       <div className=" h-14 flex justify-between items-center  border-t-1">
         <div className="w-1 h-full bg-green-300"></div>
-        <p className="flex-1 px-2 text-sm">Estudar React</p>
+        <p className="flex-1 px-2 text-sm">{task.task}</p>
         <div className="flex items-center gap-2">
           <EditTask />
           <Trash2 size={16} className="cursor-pointer"/>
         
         </div>
       </div>
-    </div>
+    </div>))}
 
 <div className="flex justify-between  items-center">
 
